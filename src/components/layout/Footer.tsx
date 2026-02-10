@@ -88,7 +88,7 @@ export const Footer = () => {
           © 2024 VASANTHAN EDITS. ALL RIGHTS RESERVED.
         </p>
         <p className="font-mono text-[8px] text-white/20 uppercase tracking-[0.5em]">
-          BUILT BY ANTIGRAVITY
+          BUILT BY <a href="https://devprathap.online" target="_blank" rel="noopener noreferrer" className="hover:text-matrix transition-colors">DEV-PRATHAP</a>
         </p>
       </div>
     </footer>
