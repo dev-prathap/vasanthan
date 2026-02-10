@@ -147,11 +147,11 @@ export default function ProjectPage() {
           src={project.videoUrl}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40" />
-
+        
         {/* Navigation */}
         <div className="absolute top-10 left-6 md:left-10 right-6 md:right-10 z-50 flex items-center justify-between">
           <MagneticButton>
-            <button
+            <button 
               onClick={() => router.back()}
               className="flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:bg-matrix hover:text-black transition-all group"
             >
@@ -201,39 +201,39 @@ export default function ProjectPage() {
               <p className="text-lg font-display uppercase text-white">{item.value}</p>
             </div>
           ))}
-        </div>
+      </div>
       </section>
 
       {/* Narrative */}
       <section className="narrative-section relative z-10 px-6 md:px-20 py-24 bg-black">
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-12">
-          <div className="col-span-12 lg:col-span-8">
+        <div className="col-span-12 lg:col-span-8">
             <h3 className="narrative-text text-sm font-mono text-white/40 uppercase tracking-[0.5em] mb-8">
-              The Narrative
-            </h3>
+            The Narrative
+          </h3>
             <p className="narrative-text text-2xl md:text-4xl font-body text-white/80 leading-snug mb-12">
               {project.description || "This project pushed the boundaries of social media storytelling. Using high-energy pacing, custom sound design, and experimental color grades to capture the attention of millions."}
             </p>
-          </div>
+        </div>
 
           {/* Sidebar Actions */}
-          <div className="col-span-12 lg:col-span-4 flex flex-col gap-6">
+        <div className="col-span-12 lg:col-span-4 flex flex-col gap-6">
             <button
               className="w-full py-6 bg-white text-black font-display text-xl uppercase tracking-widest flex items-center justify-center gap-4 hover:bg-matrix transition-colors rounded-xl"
               data-cursor-text="PLAY"
             >
               Play Full Edit <Play size={22} fill="currentColor" />
-            </button>
-
-            <div className="grid grid-cols-2 gap-4">
+          </button>
+          
+          <div className="grid grid-cols-2 gap-4">
               <button className="py-4 border border-white/10 rounded-xl flex items-center justify-center gap-2 hover:bg-white/5 transition-colors">
                 <Share2 size={16} />
                 <span className="font-mono text-[10px] uppercase tracking-wider">Share</span>
-              </button>
+            </button>
               <button className="py-4 border border-white/10 rounded-xl flex items-center justify-center gap-2 hover:bg-white/5 transition-colors">
                 <ExternalLink size={16} />
                 <span className="font-mono text-[10px] uppercase tracking-wider">Live</span>
-              </button>
+            </button>
             </div>
           </div>
         </div>
@@ -281,7 +281,7 @@ export default function ProjectPage() {
               {project.outcome || (
                 <>Generated over <span className="text-matrix font-mono">{project.views}</span> organic views and increased client engagement by 200%.</>
               )}
-            </p>
+             </p>
           </div>
         </div>
       </section>

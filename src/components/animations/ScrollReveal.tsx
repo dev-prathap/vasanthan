@@ -34,8 +34,8 @@ interface ScrollRevealProps {
   /** Additional className */
   className?: string;
   /** HTML tag to render. Default: "div" */
-  as?: keyof JSX.IntrinsicElements;
-}
+  as?: keyof React.JSX.IntrinsicElements;
+ }
 
 export const ScrollReveal = ({
   children,
@@ -175,7 +175,7 @@ export const ScrollReveal = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const Component = Tag as React.ElementType;
+  const Component = Tag as any;
 
   return (
     <Component ref={ref} className={className}>

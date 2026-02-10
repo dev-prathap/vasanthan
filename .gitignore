@@ -36,3 +36,5 @@ next-env.d.ts
 
 # temp assets
 public/_temp/
+
+.agent/

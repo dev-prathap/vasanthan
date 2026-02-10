@@ -74,7 +74,7 @@ export const Scene3D = () => {
           <Environment preset="city" />
 
           {/* Post-Processing - The "Advanced" Look */}
-          <EffectComposer disableNormalPass>
+          <EffectComposer enableNormalPass={false}>
             <Bloom 
               luminanceThreshold={0.2} 
               mipmapBlur 

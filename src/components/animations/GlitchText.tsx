@@ -10,7 +10,7 @@ interface GlitchTextProps {
   /** The final resolved text */
   text: string;
   /** HTML tag. Default: "span" */
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   /** Additional className */
   className?: string;
   /** Trigger on scroll (true) or on mount (false). Default: true */
@@ -143,7 +143,7 @@ export const GlitchText = ({
     }
   };
 
-  const Component = Tag as React.ElementType;
+  const Component = Tag as any;
 
   return (
     <div
