@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, MessageSquare, Send, ArrowRight } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { GlitchText } from "@/components/animations/GlitchText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,14 +58,14 @@ export const ContactSection = () => {
         {/* Left: Headline & Info */}
         <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
           <h4 className="font-mono text-matrix text-[10px] tracking-[0.5em] uppercase mb-8">
-            Phase 09 // Lead Gen
+            <GlitchText text="Phase 09 // Lead Gen" />
           </h4>
           <h2 
             ref={headlineRef}
             className="text-6xl md:text-8xl font-display uppercase tracking-tight leading-[0.9] mb-12"
           >
-            Let&apos;s Build <br /> 
-            <span className="text-matrix">Your Legend.</span>
+            <GlitchText text="Let's Build" /> <br /> 
+            <span className="text-matrix"><GlitchText text="Your Legend." /></span>
           </h2>
           
           <div className="space-y-8">

@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { ArrowLeft, ArrowRight, Play, Share2, ExternalLink } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { GlitchText } from "@/components/animations/GlitchText";
 import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -179,15 +180,15 @@ export default function ProjectPage() {
         </div>
 
         {/* Project Header */}
-        <div className="absolute bottom-16 md:bottom-20 left-6 md:left-20 right-6 md:right-20 z-20">
+        <div className="absolute bottom-12 md:bottom-20 left-6 md:left-20 right-6 md:right-20 z-20">
           <span className="detail-hero-content px-4 py-1.5 bg-matrix text-black text-[10px] font-mono tracking-widest uppercase rounded-full mb-4 inline-block">
-            {project.category}
+            <GlitchText text={project.category} />
           </span>
-          <h1 className="detail-hero-content text-5xl md:text-8xl lg:text-9xl font-display uppercase tracking-tighter leading-[0.85] mb-4">
-            {project.title}
+          <h1 className="detail-hero-content text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display uppercase tracking-tighter leading-[0.85] mb-4">
+            <GlitchText text={project.title} />
           </h1>
-          <p className="detail-hero-content font-mono text-matrix tracking-[0.5em] uppercase text-sm">
-            {project.views}
+          <p className="detail-hero-content font-mono text-matrix tracking-[0.5em] uppercase text-xs md:text-sm">
+            <GlitchText text={project.views} />
           </p>
         </div>
       </section>

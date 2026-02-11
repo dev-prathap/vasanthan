@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { GlitchText } from "@/components/animations/GlitchText";
 import {
   Camera,
   Film,
@@ -59,6 +60,18 @@ export default function AboutPage() {
         duration: 1.2,
         ease: "power4.out",
         delay: 0.3,
+      });
+
+      // Background Parallax
+      gsap.to(".about-bg-parallax", {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
       });
 
       // Stats counter
@@ -118,25 +131,60 @@ export default function AboutPage() {
   return (
     <main ref={containerRef} className="relative bg-black min-h-screen overflow-hidden">
       {/* Hero */}
-      <section className="relative h-screen flex items-center px-6 md:px-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-matrix/5 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-[1400px] mx-auto w-full">
+      <section className="relative h-screen flex items-center px-6 md:px-20 overflow-hidden group">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(0,255,65,0.05)_0%,transparent_50%)] pointer-events-none" />
+        
+        {/* Background Showreel Image with Parallax & UI Elements */}
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="absolute right-0 top-0 w-full md:w-[60%] h-full opacity-50 md:opacity-70 transition-transform duration-700 ease-out"
+            style={{ viewTransitionName: 'about-bg-image' } as any}
+          >
+            <div className="absolute inset-0 overflow-hidden">
+               <img 
+                src="/images/hero/showreel.jpg" 
+                alt="Background Showreel" 
+                className="about-bg-parallax w-full h-full object-cover object-[60%_center] md:object-center scale-110"
+              />
+            </div>
+            
+            {/* Complex Fade Mask - Targeted for mobile vs desktop */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 md:via-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
+            
+            {/* Mobile-only tint to protect text readability while image is visible */}
+            <div className="absolute inset-0 bg-black/20 md:hidden" />
+            
+            {/* Decorative HUD/Grid Elements */}
+            <div className="absolute bottom-10 right-10 flex flex-col items-end gap-2 opacity-40 md:opacity-20 hidden sm:flex">
+              <div className="w-24 md:w-32 h-[1px] bg-matrix" />
+              <p className="font-mono text-[7px] md:text-[8px] text-matrix uppercase tracking-[0.4em]">Coordinate: 12.9716° N, 80.2023° E</p>
+              <p className="font-mono text-[7px] md:text-[8px] text-white uppercase tracking-[0.2em]">Live Render Process: Active</p>
+            </div>
+          </div>
+          
+          {/* Subtle Scanning Line */}
+          <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(0,255,65,0.03)_50%,transparent_100%)] h-[100px] w-full animate-scan-slow opacity-20 pointer-events-none" />
+        </div>
+
+        <div className="max-w-[1400px] mx-auto w-full relative z-10">
           <div className="overflow-hidden mb-4">
-            <h4 className="about-hero-line font-mono text-matrix text-xs tracking-[0.5em] uppercase flex items-center gap-2">
-              <Camera size={14} /> The Architect
+            <h4 className="about-hero-line font-mono text-matrix text-[10px] md:text-xs tracking-[0.5em] uppercase flex items-center gap-2">
+              <div className="w-8 md:w-12 h-[1px] bg-matrix/30 mr-2" />
+              <GlitchText text="The Architect" />
             </h4>
           </div>
           <div className="overflow-hidden">
-            <h1 className="about-hero-line text-7xl md:text-[12rem] font-display uppercase tracking-tighter leading-[0.85]">
-              R. VASANTHAN
-            </h1>
+             <h1 className="about-hero-line text-[12vw] sm:text-7xl md:text-[10rem] lg:text-[12rem] font-display uppercase tracking-tighter leading-[0.85] text-white">
+                <GlitchText text="R. VASANTHAN" />
+             </h1>
           </div>
           <div className="overflow-hidden">
-            <p className="about-hero-line text-xl md:text-3xl font-body text-white/40 mt-8 max-w-2xl leading-relaxed">
-              Professional video editor & cinematographer from Chennai, crafting
-              viral stories that move millions.
+            <p className="about-hero-line text-xl md:text-3xl font-body text-white/60 mt-8 max-w-3xl leading-relaxed">
+              Engineering <span className="text-white">viral visual experiences</span> that hijack attention and convert viewers into believers.
             </p>
           </div>
+          
           <div className="overflow-hidden mt-12">
             <div className="about-hero-line flex items-center gap-6">
               <div className="flex items-center gap-2 text-white/40">
@@ -152,6 +200,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+
+
 
       {/* Stats */}
       <section className="about-stats px-6 md:px-20 py-32 border-t border-white/5">
@@ -172,48 +223,41 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Philosophy */}
+      {/* Philosophy Content Update */}
       <section className="philosophy-section px-6 md:px-20 py-32">
         <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-12">
           <div className="col-span-12 lg:col-span-5">
             <h4 className="philosophy-text font-mono text-matrix text-xs tracking-[0.5em] uppercase mb-6 flex items-center gap-2">
-              <Film size={14} /> Philosophy
+              <Film size={14} /> <GlitchText text="Core Philosophy" />
             </h4>
             <h2 className="philosophy-text text-5xl md:text-7xl font-display uppercase tracking-tighter leading-[0.9]">
-              Every frame <br />
-              <span className="text-white/20">tells a</span> <br />
-              story.
+              <GlitchText text="Engineering" /> <br />
+              <span className="text-white/20"><GlitchText text="Dopamine." /></span> <br />
+              <GlitchText text="Frame by Frame." />
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-7 flex flex-col justify-center gap-8">
-            <p className="philosophy-text text-lg md:text-xl font-body text-white/50 leading-relaxed">
-              I don't just edit videos — I architect experiences. Every cut, every
-              transition, every color grade is a deliberate choice designed to hold
-              attention and trigger emotion.
+            <p className="philosophy-text text-lg md:text-xl font-body text-white/60 leading-relaxed">
+              In an economy where <span className="text-white font-bold">attention is currency</span>, I am your broker. I blend cinematic precision with algorithmic psychology to architect content that doesn't just get watched—it gets felt.
             </p>
-            <p className="philosophy-text text-lg md:text-xl font-body text-white/50 leading-relaxed">
-              From the raw energy of football stadiums to the precision of brand
-              storytelling, I bring a cinematic eye and a deep understanding of
-              what makes content go viral. The secret? It's never about the
-              algorithm — it's about the feeling.
+            <p className="philosophy-text text-lg md:text-xl font-body text-white/60 leading-relaxed">
+              From the raw, unscripted energy of stadium crowds to the calculated precision of brand storytelling, my process is a <span className="text-white font-bold">Protocol of Impact</span>. Every cut is a heartbeat. Every transition is a breath.
             </p>
-            <p className="philosophy-text text-lg md:text-xl font-body text-white/50 leading-relaxed">
-              My workflow is built on speed without compromise. Fast turnarounds,
-              obsessive attention to detail, and an editing style that's instantly
-              recognizable — bold, energetic, and impossible to scroll past.
+            <p className="philosophy-text text-lg md:text-xl font-body text-white/60 leading-relaxed border-l-2 border-matrix pl-6">
+              "The algorithm doesn't reward content. It rewards retention. And retention is built on emotion."
             </p>
           </div>
         </div>
       </section>
 
-      {/* Skills */}
+      {/* Skills Headline Update */}
       <section className="skills-section px-6 md:px-20 py-32 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto">
           <h4 className="font-mono text-matrix text-xs tracking-[0.5em] uppercase mb-4 flex items-center gap-2">
-            <Zap size={14} /> Skill Matrix
+            <Zap size={14} /> <GlitchText text="Skill Matrix" />
           </h4>
           <h2 className="text-5xl md:text-7xl font-display uppercase tracking-tighter mb-16">
-            Tools of the <span className="text-white/20">Trade</span>
+            <GlitchText text="The Kinetic" /> <span className="text-white/20"><GlitchText text="Arsenal" /></span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-10">
@@ -235,14 +279,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Milestones */}
+      {/* Milestones Headline Update */}
       <section className="milestones-section px-6 md:px-20 py-32 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto">
           <h4 className="font-mono text-matrix text-xs tracking-[0.5em] uppercase mb-4 flex items-center gap-2">
-            <Award size={14} /> Journey
+            <Award size={14} /> <GlitchText text="Journey" />
           </h4>
           <h2 className="text-5xl md:text-7xl font-display uppercase tracking-tighter mb-16">
-            The <span className="text-white/20">Timeline</span>
+            <GlitchText text="Evolution" /> <span className="text-white/20"><GlitchText text="Protocol" /></span>
           </h2>
 
           <div className="relative">
@@ -266,17 +310,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Equipment */}
+      {/* Equipment Section (Unchanged, just bridging) */}
       <section className="equipment-section px-6 md:px-20 py-32 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto">
           <h4 className="font-mono text-matrix text-xs tracking-[0.5em] uppercase mb-4 flex items-center gap-2">
-            <Camera size={14} /> Arsenal
+            <Camera size={14} /> <GlitchText text="Arsenal" />
           </h4>
           <h2 className="text-5xl md:text-7xl font-display uppercase tracking-tighter mb-16">
-            My <span className="text-white/20">Gear</span>
+            <GlitchText text="My" /> <span className="text-white/20"><GlitchText text="Gear" /></span>
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {EQUIPMENT.map((item, i) => (
               <div
                 key={i}
@@ -294,15 +338,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA Update */}
       <section className="px-6 md:px-20 py-32 border-t border-white/5">
         <div className="max-w-[1400px] mx-auto text-center">
-          <h2 className="text-5xl md:text-8xl font-display uppercase tracking-tighter mb-8">
-            Let's Create <span className="text-matrix">Together</span>
+          <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display uppercase tracking-tighter mb-8 leading-[0.9]">
+            <GlitchText text="Initiate" /> <br />
+            <span className="text-matrix"><GlitchText text="Collaboration" /></span>
           </h2>
-          <p className="text-white/40 font-body text-lg max-w-xl mx-auto mb-12">
-            Got a project in mind? Whether it's a viral reel, a brand film, or a
-            full production — I'm ready to bring your vision to life.
+          <p className="text-white/40 font-body text-base md:text-lg max-w-xl mx-auto mb-12 px-4 md:px-0">
+            Ready to deploy cinematic excellence? Let's architect your brand's next viral moment.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

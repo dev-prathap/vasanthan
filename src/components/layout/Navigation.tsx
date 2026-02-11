@@ -54,8 +54,10 @@ export const Navigation = () => {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 w-full z-[1000] px-6 md:px-12 py-6 transition-all duration-300",
-          isScrolled ? "bg-black/60 backdrop-blur-xl border-b border-white/10 py-4" : "bg-transparent"
+          "fixed top-0 left-0 w-full z-[1000] px-6 md:px-12 py-6 transition-all duration-500",
+          isScrolled 
+            ? "bg-black/80 backdrop-blur-2xl border-b border-matrix/20 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.5)]" 
+            : "bg-transparent"
         )}
       >
         <div className="max-w-[1400px] mx-auto flex items-center justify-between">
@@ -120,7 +122,7 @@ export const Navigation = () => {
                 key={item.name}
                 href={item.href}
                 onClick={toggleMenu}
-                className="mobile-nav-item font-display text-6xl uppercase text-white hover:text-matrix transition-colors"
+                className="mobile-nav-item font-display text-4xl md:text-6xl uppercase text-white hover:text-matrix transition-colors"
               >
                 {item.name}
               </Link>

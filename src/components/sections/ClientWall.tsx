@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
+import { GlitchText } from "@/components/animations/GlitchText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,14 +59,14 @@ export const ClientWall = () => {
       <div className="max-w-[1400px] mx-auto px-6" id="about">
         <div className="text-center mb-16">
           <h4 className="font-mono text-matrix text-xs tracking-[0.5em] uppercase mb-4">
-            Phase 07 // Legitimacy
+            <GlitchText text="Phase 07 // Legitimacy" />
           </h4>
           <h2 className="text-4xl md:text-6xl font-display uppercase">
-            Brands <span className="text-white/20">&</span> Creators
+            <GlitchText text="Brands" /> <span className="text-white/20"><GlitchText text="&" /></span> <GlitchText text="Creators" />
           </h2>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 items-center">
+        <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 items-center">
           {CLIENTS.map((client, i) => (
             <div 
               key={i} 

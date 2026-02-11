@@ -54,8 +54,8 @@ export const CustomCursor = () => {
       const target = e.target as HTMLElement;
 
       // Move dot and follower
-      gsap.to(cursor, { x: clientX, y: clientY, duration: 0.1, overwrite: true });
-      gsap.to(follower, { x: clientX, y: clientY, duration: 0.4, ease: "power3.out", overwrite: true });
+      gsap.set(cursor, { x: clientX, y: clientY });
+      gsap.to(follower, { x: clientX, y: clientY, duration: 0.3, ease: "power3.out", overwrite: "auto" });
 
       // Closest interactive parent
       const textEl = target?.closest("[data-cursor-text]");
@@ -69,6 +69,9 @@ export const CustomCursor = () => {
       // Only update if target changed
       if (activeEl === currentTarget) return;
       currentTarget = activeEl;
+
+      // Reset mix-blend-mode by default
+      gsap.set(follower, { mixBlendMode: "normal" });
 
       // ── HIDDEN STATE ──
       if (hideEl) {
@@ -112,7 +115,7 @@ export const CustomCursor = () => {
           scale: 1.5,
           width: 32,
           height: 32,
-          background: "rgba(255,255,255,0.9)",
+          background: "#fff",
           border: "none",
           duration: 0.3,
           mixBlendMode: "difference",
@@ -165,11 +168,23 @@ export const CustomCursor = () => {
       gsap.to(follower, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.3)" });
     };
 
+    const onWindowBlur = () => {
+      gsap.to(cursor, { opacity: 0, duration: 0.3 });
+      gsap.to(follower, { opacity: 0, duration: 0.3 });
+    };
+
+    const onWindowFocus = () => {
+      gsap.to(cursor, { opacity: 1, duration: 0.3 });
+      gsap.to(follower, { opacity: 1, duration: 0.3 });
+    };
+
     window.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseenter", onMouseEnter);
     document.addEventListener("mouseleave", onMouseLeave);
     document.addEventListener("mousedown", onMouseDown);
     document.addEventListener("mouseup", onMouseUp);
+    window.addEventListener("blur", onWindowBlur);
+    window.addEventListener("focus", onWindowFocus);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
@@ -177,6 +192,8 @@ export const CustomCursor = () => {
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mousedown", onMouseDown);
       document.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("blur", onWindowBlur);
+      window.removeEventListener("focus", onWindowFocus);
     };
   }, [resetFollower]);
 

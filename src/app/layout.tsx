@@ -18,20 +18,23 @@ const bebas = Bebas_Neue({
 export const metadata: Metadata = {
   title: "Vasanthan | Viral Content Architect & Video Editor",
   description: "Advanced cinematic portfolio of R. Vasanthan. Specializing in high-energy social media editing, sports videography, and viral storytelling.",
-  keywords: ["Video Editor", "Cinematic Videography", "Vasanthan", "Social Media Marketing", "Brazil Legends", "Football Plus"],
+  keywords: ["Video Editor", "Cinematic Videography", "R. Vasanthan", "Social Media Marketing", "Brazil Legends", "Football Plus", "Viral Content"],
   authors: [{ name: "R. Vasanthan" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Vasanthan | Viral Content Architect",
-    description: "300+ videos, millions of views. Step into the cinematic edit.",
+    description: "Architecting viral reality. 300+ assets deployed, millions of views. Step into the cinematic protocol.",
     url: "https://vasanthan.com",
     siteName: "Vasanthan Portfolio",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Vasanthan - Viral Content Architect" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vasanthan | Video Editor",
+    title: "Vasanthan | Viral Content Architect",
     description: "Crafting viral legends, one frame at a time.",
     images: ["/og-image.jpg"],
   },

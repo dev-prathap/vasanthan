@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { Milestone, Calendar, TrendingUp, Award } from "lucide-react";
+import { GlitchText } from "@/components/animations/GlitchText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,10 +86,10 @@ export const JourneyTimeline = () => {
         <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <h4 className="font-mono text-matrix text-xs tracking-[0.5em] uppercase mb-6">
-              Phase 06 // Legacy
+              <GlitchText text="Phase 06 // Legacy" />
             </h4>
             <h2 className="text-6xl md:text-8xl font-display uppercase tracking-tighter">
-              The Journey <br /> <span className="text-white/20">of 300 Frames.</span>
+              <GlitchText text="The Journey" /> <br /> <span className="text-white/20"><GlitchText text="of 300 Frames." /></span>
             </h2>
           </div>
           <p className="text-white/40 font-body text-xl max-w-sm">
@@ -97,16 +98,19 @@ export const JourneyTimeline = () => {
         </div>
 
         {/* The Timeline Line */}
-        <div className="relative w-full h-[1px] bg-white/10 mb-20 origin-left timeline-line scale-x-0" />
+        <div className="hidden md:block relative w-full h-[1px] bg-white/10 mb-20 origin-left timeline-line scale-x-0" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 relative">
+          {/* Vertical Timeline Line for Mobile */}
+          <div className="md:hidden absolute left-4 top-0 bottom-0 w-[1px] bg-white/10" />
+
           {MILESTONES.map((item, i) => (
-            <div key={i} className="milestone-card relative group">
+            <div key={i} className="milestone-card relative group pl-12 md:pl-0">
               {/* Connector Dot */}
-              <div className="absolute -top-[84px] left-0 w-3 h-3 rounded-full bg-white group-hover:bg-matrix group-hover:scale-150 transition-all z-10" />
+              <div className="absolute top-2 left-3 md:-top-[84px] md:left-0 w-3 h-3 rounded-full bg-white group-hover:bg-matrix group-hover:scale-150 transition-all z-10" />
               
               {/* Milestone Image */}
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-matrix/30 transition-all">
+              <div className="relative w-full aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-matrix/30 transition-all">
                 <img 
                   src={item.image} 
                   alt={item.title}
@@ -121,7 +125,7 @@ export const JourneyTimeline = () => {
               </span>
               <div className="flex items-center gap-3 mb-4">
                 {item.icon}
-                <h3 className="text-2xl font-display uppercase text-white group-hover:text-matrix transition-colors">
+                <h3 className="text-xl md:text-2xl font-display uppercase text-white group-hover:text-matrix transition-colors">
                   {item.title}
                 </h3>
               </div>
@@ -130,7 +134,7 @@ export const JourneyTimeline = () => {
               </p>
               <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
                  <span className="font-mono text-[8px] text-matrix uppercase tracking-widest block mb-1">Checkpoint</span>
-                 <span className="text-xl font-display uppercase">{item.stat}</span>
+                 <span className="text-lg md:text-xl font-display uppercase">{item.stat}</span>
               </div>
             </div>
           ))}

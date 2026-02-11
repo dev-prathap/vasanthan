@@ -5,6 +5,7 @@ import { PROJECTS } from "@/types/project";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GlitchText } from "@/components/animations/GlitchText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,10 +54,11 @@ export const BentoGrid = () => {
       
       <div ref={titleRef} id="work" className="max-w-[1400px] mx-auto mb-20 text-center md:text-left">
         <h2 className="text-sm font-mono text-matrix tracking-[0.5em] uppercase mb-4">
-          Phase 02 // Showcase
+          <GlitchText text="Phase 02 // Showcase" />
         </h2>
         <h3 className="text-5xl md:text-7xl font-display uppercase tracking-tighter">
-          Viral Content <br /> <span className="text-white/20">Portfolio</span>
+          <GlitchText text="Viral Content" /> <br /> 
+          <span className="text-white/20"><GlitchText text="Portfolio" /></span>
         </h3>
       </div>
 

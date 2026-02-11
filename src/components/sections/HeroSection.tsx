@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ManagedVideo } from "@/components/ui/ManagedVideo";
+import { GlitchText } from "@/components/animations/GlitchText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +69,7 @@ export const HeroSection = () => {
               className="font-display font-black uppercase"
               fill="black"
               style={{ 
-                fontSize: '150px',
+                fontSize: 'clamp(80px, 15vw, 150px)',
                 fontFamily: 'var(--font-display), "Bebas Neue", sans-serif'
               }}
             >
@@ -80,26 +81,27 @@ export const HeroSection = () => {
       </svg>
 
       {/* Layer 3: Secondary Content */}
-      <div className="absolute bottom-10 left-10 z-20 flex flex-col gap-2">
+      <div className="absolute bottom-10 left-6 md:left-10 z-20 flex flex-col gap-2 max-w-[80vw] md:max-w-none">
         <div className="flex flex-col">
-            <p className="font-mono text-matrix text-[10px] tracking-[0.5em] uppercase">
+            <p className="font-mono text-matrix text-[8px] md:text-[10px] tracking-[0.5em] uppercase">
                 Phase 01 // Origin
             </p>
-            <p className="font-mono text-white/30 text-[8px] tracking-[0.2em] uppercase">
+            <p className="font-mono text-white/30 text-[7px] md:text-[8px] tracking-[0.2em] uppercase">
                 Viral Content Architect
             </p>
         </div>
-        <h2 className="font-display text-4xl md:text-5xl leading-none uppercase">
-          Crafting Chaos <br /> Into Cinema.
+        <h2 className="font-display text-3xl md:text-5xl leading-none uppercase">
+          <GlitchText text="Architecting" /> <br /> 
+          <GlitchText text="Viral Reality." />
         </h2>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 right-10 z-20 flex flex-col items-center gap-4">
-        <div className="w-[1px] h-[60px] bg-white/20 relative overflow-hidden">
+      <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-20 flex flex-col items-center gap-4">
+        <div className="w-[1px] h-[40px] md:h-[60px] bg-white/20 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1/2 bg-matrix animate-pulse" />
         </div>
-        <p className="font-mono text-[8px] uppercase tracking-widest vertical-text opacity-40">
+        <p className="font-mono text-[7px] md:text-[8px] uppercase tracking-widest vertical-text opacity-40">
           Scroll to Explore
         </p>
       </div>

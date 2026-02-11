@@ -3,7 +3,8 @@
 import React, { useEffect, useRef } from "react";
 import { Scene3D } from "@/components/3d/Scene";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/all";
+import { GlitchText } from "@/components/animations/GlitchText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,22 +32,22 @@ export const BehindScenes = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-screen bg-black grid grid-cols-1 md:grid-cols-2 overflow-hidden border-t border-white/5"
+      className="relative w-full min-h-screen bg-black flex flex-col md:grid md:grid-cols-2 overflow-hidden border-t border-white/5"
     >
       {/* Left: Content */}
       <div 
         ref={textRef}
-        className="flex flex-col justify-center px-6 md:px-20 z-10"
+        className="flex flex-col justify-center px-6 md:px-20 z-10 py-20 md:py-0"
       >
         <h4 className="font-mono text-matrix text-xs tracking-[0.5em] uppercase mb-6">
-          Phase 08 // Workflow
+          <GlitchText text="Phase 08 // Workflow" />
         </h4>
-        <h2 className="text-5xl md:text-7xl font-display uppercase tracking-tighter leading-[0.9]">
-          Behind the <br /> 
-          <span className="text-white/20">Timeline</span>
+        <h2 className="text-4xl md:text-7xl font-display uppercase tracking-tighter leading-[0.9]">
+          <GlitchText text="Behind the" /> <br /> 
+          <span className="text-white/20"><GlitchText text="Timeline" /></span>
         </h2>
         
-        <p className="mt-8 text-white/40 font-body text-lg max-w-md">
+        <p className="mt-8 text-white/40 font-body text-base md:text-lg max-w-md">
           Editing is not just cutting clips. It&apos;s about rhythm, color science, and spatial storytelling. Every project is crafted in a 3D-optimized environment to ensure surgical precision.
         </p>
 
@@ -58,7 +59,7 @@ export const BehindScenes = () => {
           ].map((item, i) => (
             <div key={i} className="flex flex-col gap-1">
               <span className="font-mono text-[8px] text-matrix uppercase tracking-widest">{item.label}</span>
-              <span className="font-display text-xl uppercase text-white/80">{item.value}</span>
+              <span className="font-display text-lg md:text-xl uppercase text-white/80">{item.value}</span>
             </div>
           ))}
         </div>
@@ -66,7 +67,7 @@ export const BehindScenes = () => {
 
       {/* Right: 3D Visualization */}
       <div 
-        className="relative h-full w-full"
+        className="relative h-[50vh] md:h-full w-full"
         data-cursor-text="EXPLORE"
       >
         <div className="absolute inset-0 z-0">

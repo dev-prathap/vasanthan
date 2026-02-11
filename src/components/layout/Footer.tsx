@@ -12,16 +12,16 @@ export const Footer = () => {
   return (
     <footer className="relative bg-space py-20 px-6 md:px-12 border-t border-white/5 overflow-hidden">
       {/* Background Text */}
-      <div className="absolute bottom-0 left-0 w-full h-[100px] pointer-events-none select-none opacity-[0.02] flex items-end">
+      <div className="absolute bottom-0 left-0 w-full h-[100px] pointer-events-none select-none opacity-[0.02] hidden lg:flex items-end">
         <span className="text-[200px] font-display uppercase leading-none translate-y-1/2">
           VASANTHAN
         </span>
       </div>
 
-      <div className="max-w-[1400px] mx-auto grid grid-cols-12 gap-12 relative z-10">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative z-10">
         {/* Left: Branding */}
-        <div className="col-span-12 lg:col-span-5">
-          <div className="flex items-center gap-2 mb-8">
+        <div className="col-span-1 lg:col-span-5 text-center lg:text-left">
+          <div className="flex items-center justify-center lg:justify-start gap-2 mb-8">
             <div className="w-8 h-8 bg-matrix flex items-center justify-center font-display text-base text-black rounded">
               V
             </div>
@@ -29,11 +29,11 @@ export const Footer = () => {
               VASANTHAN
             </span>
           </div>
-          <p className="text-white/40 font-body text-xl max-w-md leading-relaxed">
+          <p className="text-white/40 font-body text-lg md:text-xl max-w-md mx-auto lg:mx-0 leading-relaxed">
             Crafting viral narratives for brands and athletes worldwide. Based in Chennai, working globally.
           </p>
           
-          <div className="mt-12 flex items-center gap-8">
+          <div className="mt-12 flex flex-col md:flex-row items-center justify-center lg:justify-start gap-8">
             <a href="#" className="group flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40 hover:text-matrix transition-colors">
               <Instagram size={16} /> @vasanthan_edits
             </a>
@@ -44,12 +44,12 @@ export const Footer = () => {
         </div>
 
         {/* Center: Navigation Links */}
-        <div className="col-span-6 lg:col-span-3">
+        <div className="col-span-1 lg:col-span-3 text-center lg:text-left">
           <h4 className="font-mono text-[10px] text-matrix uppercase tracking-[0.5em] mb-8">Navigate</h4>
           <ul className="flex flex-col gap-4">
             {["Work", "About", "Services", "Archive", "Contact"].map((link) => (
               <li key={link}>
-                <a href="#" className="font-display text-2xl uppercase text-white/60 hover:text-white flex items-center gap-2 group transition-all">
+                <a href="#" className="font-display text-xl md:text-2xl uppercase text-white/60 hover:text-white flex items-center justify-center lg:justify-start gap-2 group transition-all">
                   {link}
                   <ArrowUpRight size={16} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-matrix" />
                 </a>
@@ -59,10 +59,10 @@ export const Footer = () => {
         </div>
 
         {/* Right: CTA & Back to top */}
-        <div className="col-span-6 lg:col-span-4 flex flex-col items-end">
+        <div className="col-span-1 lg:col-span-4 flex flex-col items-center lg:items-end">
           <h4 className="font-mono text-[10px] text-matrix uppercase tracking-[0.5em] mb-8 hidden lg:block text-right">Start a project</h4>
-          <div className="flex-1 flex flex-col items-end gap-12 w-full">
-            <button className="text-right group">
+          <div className="flex-1 flex flex-col items-center lg:items-end gap-12 w-full">
+            <button className="text-center lg:text-right group">
                <span className="block text-4xl lg:text-6xl font-display uppercase leading-tight hover:text-matrix transition-colors">
                  GET IN <br /> TOUCH
                </span>

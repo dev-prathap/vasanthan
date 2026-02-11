@@ -114,3 +114,12 @@ html.lenis {
   pointer-events: none;
   z-index: 9998;
 }
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100vh); }
+}
+
+.animate-scan-slow {
+  animation: scan 8s linear infinite;
+}

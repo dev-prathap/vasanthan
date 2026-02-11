@@ -26,10 +26,10 @@ export const ProjectCard = ({ project }: { project: Project }) => {
   };
 
   const sizeClasses = {
-    small: "col-span-12 md:col-span-4 h-[300px]",
-    medium: "col-span-12 md:col-span-6 lg:col-span-4 h-[400px]",
-    large: "col-span-12 md:col-span-8 h-[600px]",
-    wide: "col-span-12 h-[400px]",
+    small: "col-span-12 md:col-span-4 h-[250px] md:h-[300px]",
+    medium: "col-span-12 md:col-span-6 lg:col-span-4 h-[300px] md:h-[400px]",
+    large: "col-span-12 md:col-span-8 h-[400px] md:h-[600px]",
+    wide: "col-span-12 h-[300px] md:h-[400px]",
   };
 
   return (
